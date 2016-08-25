@@ -36,13 +36,9 @@ public class ClassReflectionInfo {
             System.out.println("");
             System.out.println("Реализует следующие методы:");
             printMethods(tClass);
-
-
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     private static void printConstructors(Class tClass) {
@@ -59,7 +55,16 @@ public class ClassReflectionInfo {
     }
 
     private static void printModifiers(Class tClass) {
-
+        int modifiers = tClass.getModifiers();
+        if (Modifier.isPublic(modifiers)) {
+            System.out.print("public ");
+        }
+        if (Modifier.isAbstract(modifiers)) {
+            System.out.print("abstract");
+        }
+        if (Modifier.isFinal(modifiers)) {
+            System.out.print("final");
+        }
     }
 
     private static void printInterfaces(Class tClass) {
